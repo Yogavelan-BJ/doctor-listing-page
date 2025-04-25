@@ -49,6 +49,7 @@ export const AppProvider = ({ children }) => {
         filteredData,
         sortedData,
         specialities,
+        setData,
         setFilteredData,
         setSortedData,
       }}

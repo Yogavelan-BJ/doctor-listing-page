@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from "react";
+import { useAppContext } from "../context/context";
 
 const Sort = () => {
   const [selectedSort, setSelectedSort] = useState("");
-
+  const { data, setFilteredData, filteredData, setData } = useAppContext();
   useEffect(() => {
     if (selectedSort === "price") {
       console.log("Sorting by Price: Low to High");
+      const d = data?.sort((a, b) => {
+        const feeA = parseInt(a.fees.replace(/[^\d]/g, ""), 10);
+        const feeB = parseInt(b.fees.replace(/[^\d]/g, ""), 10);
+        return feeA - feeB;
+      });
+      setFilteredData(d);
     } else if (selectedSort === "experience") {
       console.log("Sorting by Most Experience first");
     }
