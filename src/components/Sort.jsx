@@ -1,0 +1,45 @@
+import React, { useEffect, useState } from "react";
+
+const Sort = () => {
+  const [selectedSort, setSelectedSort] = useState("");
+
+  useEffect(() => {
+    if (selectedSort === "price") {
+      console.log("Sorting by Price: Low to High");
+    } else if (selectedSort === "experience") {
+      console.log("Sorting by Most Experience first");
+    }
+  }, [selectedSort]);
+
+  return (
+    <div className="p-4 bg-white rounded-lg shadow mb-4">
+      <h3 className="text-lg font-semibold mb-2">Sort by</h3>
+      <div className="flex flex-col space-y-2">
+        <label>
+          <input
+            type="radio"
+            value="price"
+            name="sort"
+            checked={selectedSort === "price"}
+            onChange={(e) => setSelectedSort(e.target.value)}
+            className="mr-2"
+          />
+          Price: Low–High
+        </label>
+        <label>
+          <input
+            type="radio"
+            value="experience"
+            name="sort"
+            checked={selectedSort === "experience"}
+            onChange={(e) => setSelectedSort(e.target.value)}
+            className="mr-2"
+          />
+          Experience – Most Experience first
+        </label>
+      </div>
+    </div>
+  );
+};
+
+export default Sort;
